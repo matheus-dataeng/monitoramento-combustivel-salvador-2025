@@ -1,0 +1,101 @@
+Estado_id,Estado_sigla,Municipio,Bairro,Produto,Valor_venda,Status_preco,Unidade_medida,Revenda,CEP,Data_coleta,Periodo_festivo
+487,BA,Salvador,Retiro,Etanol,"4,78",Preço abaixo,R$ / litro,Pacifico Comercio E Servicos De Combustiveis Ltda,41204-025,2025-01-27,Festa de Fim de Ano
+487,BA,Salvador,Lapinha,Gasolina Aditivada,"6,59",Preço alto,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,40325-220,2025-12-08,Festa de Fim de Ano
+487,BA,Salvador,Sao  Cristovao,Gasolina,"6,49",Preço normal,R$ / litro,J&J Combustiveis Ltda,41635-150,2025-06-30,Festas Juninas
+487,BA,Salvador,Armacao,Gasolina,"6,09",Preço normal,R$ / litro,Wf3 Comercio De Combustiveis Ltda,41750-240,2025-12-01,Festa de Fim de Ano
+487,BA,Salvador,Stella Maris,Diesel S10,"5,99",Preço abaixo,R$ / litro,Posto Gameleira Ltda,41500-060,2025-06-18,Festas Juninas
+487,BA,Salvador,Brotas,Gasolina Aditivada,"6,44",Preço normal,R$ / litro,Posto Kalilandia Ltda,40243-045,2025-12-22,Festa de Fim de Ano
+487,BA,Salvador,Caminho Das Arvores,Gasolina,"6,39",Preço normal,R$ / litro,Auto Posto Vela Branca Ltda,41820-020,2025-01-06,Festa de Fim de Ano
+487,BA,Salvador,Rio Vermelho,Diesel S10,"5,83",Preço abaixo,R$ / litro,Posto Transicao Ltda,40230-730,2025-06-02,Festas Juninas
+487,BA,Salvador,Paripe,Gasolina Aditivada,"6,59",Preço alto,R$ / litro,Posto Kalilandia Ltda,40810-010,2025-06-02,Festas Juninas
+487,BA,Salvador,Pituba,Gasolina Aditivada,"6,39",Preço normal,R$ / litro,J A Sobral & Cia Ltda,41800-700,2025-12-23,Festa de Fim de Ano
+487,BA,Salvador,FederaãÃO,Gasolina,"6,39",Preço normal,R$ / litro,Posto Kalilandia Ltda,40170-130,2025-01-22,Festa de Fim de Ano
+487,BA,Salvador,Cabula,Diesel S10,"6,79",Preço alto,R$ / litro,Sa Nacional De Veiculos Ltda,41195-000,2025-01-20,Festa de Fim de Ano
+487,BA,Salvador,Pituba,Gasolina Aditivada,"6,69",Preço alto,R$ / litro,Posto Dique Combustiveis Ltda.,41800-700,2025-01-08,Festa de Fim de Ano
+487,BA,Salvador,Piraja,Gasolina,"5,99",Preço abaixo,R$ / litro,Acf Comercio E Servicos Ltda,40301-155,2025-12-09,Festa de Fim de Ano
+487,BA,Salvador,Caminho Das Arvores,Diesel S10,"5,99",Preço abaixo,R$ / litro,Posto Kalilandia Ltda,41820-020,2025-01-10,Festa de Fim de Ano
+487,BA,Salvador,Arraial Do Retiro,Gasolina,"5,74",Preço abaixo,R$ / litro,J A Sobral & Cia Ltda,41204-025,2025-01-27,Festa de Fim de Ano
+487,BA,Salvador,Cajazeiras,Gnv,"4,49",Preço abaixo,R$ / m3,Posto Kalilandia Ltda,41342-315,2025-12-19,Festa de Fim de Ano
+487,BA,Salvador,Stiep,Gasolina Aditivada,"6,49",Preço normal,R$ / litro,Flamingo Comercio De Combustiveis Lubrificantes E Servicos Ltda,41770-395,2025-12-09,Festa de Fim de Ano
+487,BA,Salvador,Matatu,Gasolina,"6,29",Preço normal,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,40255-195,2025-12-22,Festa de Fim de Ano
+487,BA,Salvador,Stiep,Etanol,"4,29",Preço abaixo,R$ / litro,Posto Kalilandia Ltda,41770-095,2025-01-27,Festa de Fim de Ano
+487,BA,Salvador,Stiep,Gasolina,"6,19",Preço normal,R$ / litro,Posto Kalilandia Ltda,41770-395,2025-12-25,Festa de Fim de Ano
+487,BA,Salvador,Paralela,Gasolina,"6,19",Preço normal,R$ / litro,Posto Kalilandia Ltda,41730-101,2025-12-19,Festa de Fim de Ano
+487,BA,Salvador,FederaãÃO,Gasolina,"6,39",Preço normal,R$ / litro,Posto De Lubrificacao Barbalho Ltda,40170-130,2025-06-02,Festas Juninas
+487,BA,Salvador,Paralela,Gasolina Aditivada,"6,88",Preço alto,R$ / litro,Pacifico Comercio E Servicos De Combustiveis Ltda,41730-101,2025-01-20,Festa de Fim de Ano
+487,BA,Salvador,Nazare,Gasolina,"6,29",Preço normal,R$ / litro,Posto De Gasolina Felici Ltda,40040-340,2025-06-23,Festas Juninas
+487,BA,Salvador,Campo Grande,Gnv,"4,49",Preço abaixo,R$ / mÂ³,Posto Kalilandia Ltda,40080-030,2025-01-10,Festa de Fim de Ano
+487,BA,Salvador,Lapinha,Gasolina Aditivada,"6,59",Preço alto,R$ / litro,Estella Maris Derivados De Petroleo Ltda,40325-220,2025-01-02,Festa de Fim de Ano
+487,BA,Salvador,Costa Azul,Gasolina Aditivada,"6,14",Preço normal,R$ / litro,Auto Posto Vela Branca Ltda,41760-035,2025-12-15,Festa de Fim de Ano
+487,BA,Salvador,Itapua,Etanol,"4,63",Preço abaixo,R$ / litro,Posto Transicao Ltda,41635-150,2025-06-11,Festas Juninas
+487,BA,Salvador,Sao  Cristovao,Gasolina,"6,58",Preço alto,R$ / litro,Pacifico Comercio E Servicos De Combustiveis Ltda,41635-150,2025-06-23,Festas Juninas
+487,BA,Salvador,Pituacu,Gasolina Aditivada,"6,2",Preço normal,R$ / litro,Auto Posto BudiãO Ltda.,41740-090,2025-12-09,Festa de Fim de Ano
+487,BA,Salvador,Pituba,Gasolina Aditivada,"6,69",Preço alto,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,41800-700,2025-06-02,Festas Juninas
+487,BA,Salvador,Piraja,Etanol,"4,88",Preço abaixo,R$ / litro,J&J Combustiveis Ltda,40301-155,2025-12-17,Festa de Fim de Ano
+487,BA,Salvador,Brotas,Gasolina Aditivada,"6,19",Preço normal,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,40285-600,2025-12-23,Festa de Fim de Ano
+487,BA,Salvador,Praia Grande,Diesel S10,"5,99",Preço abaixo,R$ / litro,Posto Gameleira Ltda,40720-690,2025-06-18,Festas Juninas
+487,BA,Salvador,Brotas,Etanol,"4,69",Preço abaixo,R$ / litro,Posto Kalilandia Ltda,40285-600,2025-06-10,Festas Juninas
+487,BA,Salvador,Arraial Do Retiro,Gasolina,"5,89",Preço abaixo,R$ / litro,Posto Kalilandia Ltda,41204-025,2025-12-15,Festa de Fim de Ano
+487,BA,Salvador,Pituba,Gasolina,"5,95",Preço abaixo,R$ / litro,J A Sobral & Cia Ltda,41800-700,2025-12-03,Festa de Fim de Ano
+487,BA,Salvador,Rio Vermelho,Gasolina,"6,29",Preço normal,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,41940-000,2025-12-22,Festa de Fim de Ano
+487,BA,Salvador,Armacao,Gasolina,"5,8",Preço abaixo,R$ / litro,Posto Casagrande Ltda,41750-230,2025-12-09,Festa de Fim de Ano
+487,BA,Salvador,Rio Vermelho,Gasolina Aditivada,"6,09",Preço normal,R$ / litro,Posto Kalilandia Ltda,40230-730,2025-01-24,Festa de Fim de Ano
+487,BA,Salvador,Cajazeiras,Gasolina Aditivada,"6,69",Preço alto,R$ / litro,J A Sobral & Cia Ltda,41345-040,2025-01-03,Festa de Fim de Ano
+487,BA,Salvador,Pituba,Etanol,"4,69",Preço abaixo,R$ / litro,Estella Maris Derivados De Petroleo Ltda,41800-700,2025-06-19,Festas Juninas
+487,BA,Salvador,Brotas,Gnv,"3,99",Preço abaixo,R$ / m3,Ecopostos - Combustiveis E Servicos Ltda,40285-600,2025-12-09,Festa de Fim de Ano
+487,BA,Salvador,Nazare,Gasolina Aditivada,"6,44",Preço normal,R$ / litro,Posto Kalilandia Ltda,40240-080,2025-12-22,Festa de Fim de Ano
+487,BA,Salvador,Stella Maris,Gasolina,"5,8",Preço abaixo,R$ / litro,Sa Nacional De Veiculos Ltda,41500-060,2025-12-17,Festa de Fim de Ano
+487,BA,Salvador,Estrada Da Base Naval,Gasolina Aditivada,"6,47",Preço normal,R$ / litro,Posto Independencia De Lubrificacao Ltda,40810-010,2025-06-11,Festas Juninas
+487,BA,Salvador,Brotas,Gasolina,"5,74",Preço abaixo,R$ / litro,Posto Kalilandia Ltda,40285-600,2025-01-27,Festa de Fim de Ano
+487,BA,Salvador,Paripe,Gasolina Aditivada,"6,59",Preço alto,R$ / litro,Posto Kalilandia Ltda,40800-570,2025-06-09,Festas Juninas
+487,BA,Salvador,Pau Miudo,Gasolina,"6,19",Preço normal,R$ / litro,Posto Kalilandia Ltda,40315-518,2025-12-22,Festa de Fim de Ano
+487,BA,Salvador,Granjas Rurais Presidente Vargas,Gasolina Aditivada,"5,83",Preço abaixo,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,41230-150,2025-12-09,Festa de Fim de Ano
+487,BA,Salvador,Cajazeiras,Gasolina,"6,39",Preço normal,R$ / litro,Deusnei - Comercio De Combustiveis E Lubrificantes Ltda,41342-315,2025-06-04,Festas Juninas
+487,BA,Salvador,Armacao,Gnv,"4,49",Preço abaixo,R$ / m3,Posto Kalilandia Ltda,41750-240,2025-12-19,Festa de Fim de Ano
+487,BA,Salvador,Graca,Gasolina Aditivada,"6,69",Preço alto,R$ / litro,Esr Comercio De Combustiveis E Servicos,40150-060,2025-01-20,Festa de Fim de Ano
+487,BA,Salvador,Matatu,Etanol,"4,69",Preço abaixo,R$ / litro,Acf Comercio E Servicos Ltda,40255-195,2025-06-16,Festas Juninas
+487,BA,Salvador,Saude,Gasolina,"6,13",Preço normal,R$ / litro,J A Sobral & Cia Ltda,40045-050,2025-12-23,Festa de Fim de Ano
+487,BA,Salvador,Rio Vermelho,Gasolina Aditivada,"6,69",Preço alto,R$ / litro,Deusnei - Comercio De Combustiveis E Lubrificantes Ltda,41940-000,2025-06-04,Festas Juninas
+487,BA,Salvador,Paralela,Gasolina,"6,29",Preço normal,R$ / litro,Postos Mataripe Abastecimentos E Servicos Ltda,41730-101,2025-06-11,Festas Juninas
+487,BA,Salvador,Paralela,Etanol,"4,19",Preço abaixo,R$ / litro,Posto Kalilandia Ltda,41730-101,2025-01-24,Festa de Fim de Ano
+487,BA,Salvador,Pernambues,Gasolina,"5,84",Preço abaixo,R$ / litro,Posto Kalilandia Ltda,41130-530,2025-01-28,Festa de Fim de Ano
+487,BA,Salvador,Canela,Gnv,"4,29",Preço abaixo,R$ / m3,Gas On Line Comercio E Servicos Ltda,40110-100,2025-12-09,Festa de Fim de Ano
+487,BA,Salvador,Rio Vermelho,Gasolina Aditivada,"5,99",Preço abaixo,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,41940-000,2025-12-01,Festa de Fim de Ano
+487,BA,Salvador,FederaãÃO,Gasolina,"5,94",Preço abaixo,R$ / litro,Estella Maris Derivados De Petroleo Ltda,40170-130,2025-01-14,Festa de Fim de Ano
+487,BA,Salvador,Costa Azul,Diesel S10,"5,69",Preço abaixo,R$ / litro,Posto Kalilandia Ltda,41760-035,2025-06-05,Festas Juninas
+487,BA,Salvador,Campo Grande,Gasolina Aditivada,"6,29",Preço normal,R$ / litro,Posto Kalilandia Ltda,40080-030,2025-06-11,Festas Juninas
+487,BA,Salvador,Pituba,Gasolina,"5,79",Preço abaixo,R$ / litro,J A Sobral & Cia Ltda,41850-000,2025-12-17,Festa de Fim de Ano
+487,BA,Salvador,FederaãÃO,Etanol,"4,49",Preço abaixo,R$ / litro,Posto De Gasolina Felici Ltda,40170-130,2025-01-15,Festa de Fim de Ano
+487,BA,Salvador,Paripe,Gnv,"3,99",Preço abaixo,R$ / mÂ³,J&J Combustiveis Ltda,40810-630,2025-01-08,Festa de Fim de Ano
+487,BA,Salvador,Retiro,Diesel S10,"5,99",Preço abaixo,R$ / litro,Posto De Gasolina Felici Ltda,41204-025,2025-06-23,Festas Juninas
+487,BA,Salvador,Rio Vermelho,Etanol,"4,53",Preço abaixo,R$ / litro,S Dantas E Filhos Ltda,41940-000,2025-12-09,Festa de Fim de Ano
+487,BA,Salvador,Pituba,Gasolina,"6,29",Preço normal,R$ / litro,Gas On Line Comercio E Servicos Ltda,41800-700,2025-06-16,Festas Juninas
+487,BA,Salvador,Graca,Gnv,"3,99",Preço abaixo,R$ / mÂ³,Posto De Combustiveis Rodoviaria Ltda.,40150-060,2025-01-20,Festa de Fim de Ano
+487,BA,Salvador,Arraial Do Retiro,Gasolina Aditivada,"6,59",Preço alto,R$ / litro,Comercial De Combustiveis Cidade Jardim Ltda,41204-025,2025-06-11,Festas Juninas
+487,BA,Salvador,Saude,Gasolina Aditivada,"6,35",Preço normal,R$ / litro,Mega Posto Berimbau Ltda,40045-050,2025-12-01,Festa de Fim de Ano
+487,BA,Salvador,Itapoan,Gasolina,"6,39",Preço normal,R$ / litro,Posto De Servicos Ribeiro Ltda,41612-040,2025-06-02,Festas Juninas
+487,BA,Salvador,Piraja,Gasolina Aditivada,"6,69",Preço alto,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,40301-155,2025-06-11,Festas Juninas
+487,BA,Salvador,Stiep,Gasolina,"6,29",Preço normal,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,41770-095,2025-12-03,Festa de Fim de Ano
+487,BA,Salvador,Stiep,Gnv,"3,99",Preço abaixo,R$ / mÂ³,Posto Kalilandia Ltda,41770-095,2025-01-09,Festa de Fim de Ano
+487,BA,Salvador,Costa Azul,Gnv,"4,29",Preço abaixo,R$ / mÂ³,Posto Kalilandia Ltda,41760-035,2025-06-10,Festas Juninas
+487,BA,Salvador,Matatu,Gasolina Aditivada,"6,49",Preço normal,R$ / litro,Flamingo Comercio De Combustiveis Lubrificantes E Servicos Ltda,40255-195,2025-06-23,Festas Juninas
+487,BA,Salvador,Rio Vermelho,Etanol,"4,24",Preço abaixo,R$ / litro,Posto Kalilandia Ltda,41940-000,2025-01-27,Festa de Fim de Ano
+487,BA,Salvador,Pituba,Gnv,"4,29",Preço abaixo,R$ / mÂ³,Gas On Line Comercio E Servicos Ltda,41800-700,2025-06-16,Festas Juninas
+487,BA,Salvador,Cajazeiras,Gasolina,"6,23",Preço normal,R$ / litro,Auto Posto BudiãO Ltda.,41342-315,2025-06-16,Festas Juninas
+487,BA,Salvador,Horto Florestal,Gasolina,"6,39",Preço normal,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,40295-140,2025-06-03,Festas Juninas
+487,BA,Salvador,Graca,Gasolina Aditivada,"6,19",Preço normal,R$ / litro,Posto Kalilandia Ltda,40150-060,2025-06-26,Festas Juninas
+487,BA,Salvador,Campo Grande,Etanol,"4,69",Preço abaixo,R$ / litro,Posto Kalilandia Ltda,40080-030,2025-12-25,Festa de Fim de Ano
+487,BA,Salvador,Stiep,Gasolina Aditivada,"6,37",Preço normal,R$ / litro,Posto Independencia De Lubrificacao Ltda,41770-395,2025-06-02,Festas Juninas
+487,BA,Salvador,Paripe,Etanol,"4,29",Preço abaixo,R$ / litro,Posto Kalilandia Ltda,40810-630,2025-06-19,Festas Juninas
+487,BA,Salvador,Estrada Da Base Naval,Gasolina Aditivada,"6,69",Preço alto,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,40810-010,2025-01-06,Festa de Fim de Ano
+487,BA,Salvador,Granjas Rurais Presidente Vargas,Diesel S10,"6,79",Preço alto,R$ / litro,J A Sobral & Cia Ltda,41230-150,2025-01-24,Festa de Fim de Ano
+487,BA,Salvador,Canela,Diesel S10,"6,39",Preço normal,R$ / litro,Posto Kalilandia Ltda,40110-100,2025-06-11,Festas Juninas
+487,BA,Salvador,Rio Vermelho,Gasolina,"6,29",Preço normal,R$ / litro,Posto Casagrande Ltda,40230-730,2025-06-23,Festas Juninas
+487,BA,Salvador,Engenho Velho De Brotas,Gasolina,"5,99",Preço abaixo,R$ / litro,J A Sobral & Cia Ltda,40240-325,2025-06-30,Festas Juninas
+487,BA,Salvador,Horto Florestal,Gasolina Aditivada,"6,39",Preço normal,R$ / litro,Ecopostos - Combustiveis E Servicos Ltda,40295-140,2025-06-23,Festas Juninas
+487,BA,Salvador,Pernambues,Gasolina Aditivada,"6,69",Preço alto,R$ / litro,S&F Comercio De Combustiveis E Lubrificantes Ltda,41130-530,2025-01-21,Festa de Fim de Ano
+487,BA,Salvador,Brotas,Gasolina,"5,8",Preço abaixo,R$ / litro,Posto Transicao Ltda,40243-045,2025-12-17,Festa de Fim de Ano
+487,BA,Salvador,Pituacu,Gasolina Aditivada,"6,69",Preço alto,R$ / litro,Esr Comercio De Combustiveis E Servicos,41740-090,2025-06-11,Festas Juninas
+487,BA,Salvador,Stiep,Etanol,"4,89",Preço abaixo,R$ / litro,J&J Combustiveis Ltda,41770-395,2025-12-01,Festa de Fim de Ano
+487,BA,Salvador,Pituba,Etanol,"4,77",Preço abaixo,R$ / litro,Posto Independencia De Lubrificacao Ltda,41800-700,2025-06-11,Festas Juninas
+487,BA,Salvador,Itapua,Gasolina,"5,87",Preço abaixo,R$ / litro,Wf3 Comercio De Combustiveis Ltda,41640-380,2025-12-17,Festa de Fim de Ano
