@@ -1,22 +1,70 @@
-# Monitoramento de Preços de Combustíveis – 2025
+# Visão Geral
 
-Projeto de Engenharia de Dados com pipelines ETL em Python para tratamento,
-modelagem e carga de dados públicos de preços de combustíveis (ANP), 
-dados esses que estão disponiveis no site do GOV 
+Este projeto tem como objetivo o monitoramento, consolidação e análise de preços de combustíveis na cidade de Salvador (BA) ao longo de 2025, com foco especial em períodos festivos, onde historicamente há maior variação de preços.
 
-# Tecnologias
+O projeto foi desenvolvido com mentalidade de engenharia de dados, priorizando:
+
+- organização de pipelines
+- separação entre código, consultas e dados
+- reprodutibilidade
+- boas práticas de versionamento
+
+# Objetivos do Projeto
+
+- Coletar e consolidar dados de preços de combustíveis
+- Monitorar variações ao longo do tempo
+- Comparar períodos festivos vs. períodos regulares
+- Disponibilizar dados tratados para análise e visualização
+
+# Arquitetura do Projeto
+
+Fluxo simplificado do pipeline:
+
+# 1 - Extração
+
+- Dados obtidos a partir de fontes públicas (APIs / arquivos CSV)
+
+# 2 - Transformação
+
+- Padronização de colunas
+- Limpeza de dados
+- Consolidação de múltiplos arquivos
+
+# 3 - Carga
+
+- Geração de datasets finais
+- Exportação para arquivos estruturados
+- Integração com Google Sheets
+
+# Versionamento de Dados
+
+# 1 - Por boas práticas de engenharia de dados:
+
+- Arquivos de dados (.csv) não são versionados no repositório
+- Apenas código, queries e pipelines são mantidos no Git
+
+# 2 - Garantindo:
+
+- Repositório leve
+- Histórico limpo
+- Facilidade de reprodução dos dados via pipeline
+
+# Possíveis Análises
+
+- Evolução dos preços ao longo do ano
+- Comparação entre bairros e postos
+- Impacto de datas festivas nos preços
+- Identificação de padrões e outliers
+
+# Tecnologias Utilizadas
+
 - Python
 - Pandas
-- MySQL
-- SQLAlchemy
+- SQL
+- Jupyter Notebook
+- Git & GitHub
 - Google Sheets API
 
-# Estrutura do Projeto
-- pipelines/: scripts ETL
-- sql/: queries de análise
-- dados/: arquivos CSV (ignorados no git)
-- notebooks_apoio/: notebooks para apoio
+# Observação Final
 
-# Objetivo
-Analisar o comportamento dos preços de combustíveis em Salvador
-em diferentes períodos de 2025, principalmente periodos festivos.
+Este projeto tem fins educacionais e demonstrativos, simulando um cenário real do universo da engenharia de dados aplicada a um problema de negócio.
