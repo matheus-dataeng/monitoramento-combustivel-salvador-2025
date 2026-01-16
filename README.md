@@ -13,22 +13,22 @@ O projeto foi desenvolvido com mentalidade de engenharia de dados, priorizando:
 
 - Coletar e consolidar dados de preços de combustíveis
 - Monitorar variações ao longo do tempo
-- Comparar períodos festivos vs. períodos regulares
-- Disponibilizar dados tratados para análise e visualização
+- Analisar periodos festivos
+- Disponibilizar dados tratados para analise e visualização
 
 # Arquitetura do Projeto
 
-Fluxo simplificado do pipeline:
+Fluxo do pipeline:
 
 # 1 - Extração
 
-- Dados obtidos a partir de fontes públicas (APIs / arquivos CSV)
+- Dados obtidos a partir de fontes públicas (APIs / arquivos CSV) GOV
 
 # 2 - Transformação
 
 - Padronização de colunas
 - Limpeza de dados
-- Consolidação de múltiplos arquivos
+- Consolidação de múltiplos arquivos (ambos os semestres de 2025)
 
 # 3 - Carga
 
@@ -40,7 +40,7 @@ Fluxo simplificado do pipeline:
 
 # 1 - Por boas práticas de engenharia de dados:
 
-- Arquivos de dados (.csv) não são versionados no repositório
+- Arquivos de dados (.csv) não são versionados no repositório (Apenas o relatorio de 2025, contendo 100 linhas)
 - Apenas código, queries e pipelines são mantidos no Git
 
 # 2 - Garantindo:
@@ -54,7 +54,7 @@ Fluxo simplificado do pipeline:
 - Evolução dos preços ao longo do ano
 - Comparação entre bairros e postos
 - Impacto de datas festivas nos preços
-- Identificação de padrões e outliers
+- Identificação de padrões 
 
 # Tecnologias Utilizadas
 
