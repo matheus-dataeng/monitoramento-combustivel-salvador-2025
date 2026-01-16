@@ -1,3 +1,4 @@
+#CONCATENAÇÃO DOS ARQUIVOS QUE REPRESENTAM OS 2 SEMESTRES DE 2025
 import pandas as pd 
 import os
 from dotenv import load_dotenv

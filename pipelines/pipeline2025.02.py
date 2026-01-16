@@ -1,3 +1,4 @@
+#ETL DO ARQUIVO REFERENTE AO SEGUNDO SEMESTRE
 import pandas as pd 
 from sqlalchemy import create_engine, Integer, VARCHAR, Float, Date
 import os
