@@ -1,9 +1,8 @@
-# Variaveis de ambiente
 .env
-
-# Arquivos CSVs brutos GOV
-Preços semestrais - AUTOMOTIVOS_2025.01.csv
-Preços semestrais - AUTOMOTIVOS_2025.02.csv
-Preços anuais - AUTOMOTIVOS_2025_geral.csv
-
-notebooks_apoio
+data
+src/main.py
+data_lake 
+__pycache__
+logs/
+plugins/
+streamlit_app/

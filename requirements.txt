@@ -1,0 +1,9 @@
+pandas 
+sqlalchemy
+python-dotenv
+fastapi
+uvicorn
+pathlib
+pyarrow
+psycopg2-binary 
+boto3

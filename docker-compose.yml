@@ -1,0 +1,142 @@
+x-airflow-common: &airflow-common
+  build:
+    context: .
+    dockerfile: Dockerfile.airflow
+  env_file:
+    - .env.docker
+  environment: &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow:5432/airflow
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    PYTHONPATH: /opt/airflow
+  working_dir: /opt/airflow
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./src:/opt/airflow/src
+    - ./logs:/opt/airflow/logs
+    - ./plugins:/opt/airflow/plugins
+    - ./data:/opt/airflow/data
+    - ./data_lake:/opt/airflow/data_lake
+  depends_on:
+    postgres-airflow:
+      condition: service_healthy
+
+services:
+
+  postgres-airflow:
+    image: postgres:15
+    container_name: postgres-airflow
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_airflow_data:/var/lib/postgresql/data
+    networks:
+      - combustivel_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  postgres-projeto:
+    image: postgres:15
+    container_name: postgres-projeto
+    env_file:
+      - .env.docker
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_projeto_data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d
+    networks:
+      - combustivel_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  airflow-init:
+    <<: *airflow-common
+    container_name: airflow-init
+    depends_on:
+      postgres-airflow:
+        condition: service_healthy
+    environment:
+      <<: *airflow-common-env
+    command: bash -c "airflow db migrate && airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com"
+    networks:
+      - combustivel_network
+    restart: "no"
+
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow-webserver
+    depends_on:
+      postgres-airflow:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    environment:
+      <<: *airflow-common-env
+    ports:
+      - "8080:8080"
+    command: airflow webserver
+    networks:
+      - combustivel_network
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    restart: unless-stopped
+
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow-scheduler
+    depends_on:
+      postgres-airflow:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    environment:
+      <<: *airflow-common-env
+    command: airflow scheduler
+    networks:
+      - combustivel_network
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi-app
+    env_file:
+      - .env.docker
+    environment:
+      HOST_PG: postgres-projeto
+      PORT_PG: "5432"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app/app
+      - ./src:/app/src
+    depends_on:
+      postgres-projeto:
+        condition: service_healthy
+    networks:
+      - combustivel_network
+    restart: unless-stopped
+
+volumes:
+  postgres_airflow_data:
+  postgres_projeto_data:
+
+networks:
+  combustivel_network:
+    driver: bridge
