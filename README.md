@@ -36,7 +36,7 @@ CSV's (ANP)
 
 ---
 
-## Stack Tecnológica
+## Tecnologias utilizadas
 
 - **Python** — linguagem principal (Pandas, SQLAlchemy, python-dotenv)
 - **Apache Airflow** — orquestração do pipeline ETL
