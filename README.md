@@ -39,7 +39,7 @@ O pipeline implementa a **Medallion Architecture** (Bronze → Silver → Gold),
 
 | Tecnologia | Papel no Projeto |
 |---|---|
-| **Python 3.11** | Linguagem principal — Pandas, SQLAlchemy, python-dotenv |
+| **Python 3.12** | Linguagem principal — Pandas, SQLAlchemy, python-dotenv |
 | **Apache Airflow** | Orquestração e agendamento do pipeline ETL |
 | **Docker / Docker Compose** | Containerização de todos os serviços |
 | **AWS S3** | Armazenamento do Data Lake (camadas Bronze, Silver e Gold) |
