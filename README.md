@@ -266,5 +266,5 @@ Os dados utilizados são públicos, disponibilizados semanalmente pela **ANP —
 ---
 
 <div align="center">
-  <sub>Desenvolvido por <strong>Matheus</strong> · Salvador, BA · 2025</sub>
+  <sub>Desenvolvido por <strong>Matheus</strong> · Salvador, BA · 2026</sub>
 </div>
