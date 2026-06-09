@@ -8,6 +8,8 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-1.0.0-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Data%20Warehouse-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![AWS S3](https://img.shields.io/badge/AWS%20S3-Data%20Lake-FF9900?style=for-the-badge&logo=amazons3&logoColor=white)
+![AWS RDS](https://img.shields.io/badge/AWS%20RDS-PostgreSQL-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white)
+![AWS EC2](https://img.shields.io/badge/AWS%20EC2-FastAPI-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=for-the-badge)
 
@@ -21,9 +23,9 @@
 
 ## Sobre o Projeto
 
-Os preços dos combustíveis impactam diretamente o dia a dia de milhões de brasileiros. Este projeto nasce da curiosidade de entender como esses preços se comportam na cidade de Salvador ao longo de 2025 — e de construir, do zero, uma arquitetura de dados robusta e escalável para responder a essas perguntas.
+Os preços dos combustíveis impactam diretamente o dia a dia de milhões de brasileiros. Este projeto nasce da curiosidade de entender como esses preços se comportam na cidade de Salvador ao longo de 2025 e de construir, do zero, uma arquitetura de dados robusta e escalável para responder a essas perguntas.
 
-O pipeline implementa a **Medallion Architecture** (Bronze → Silver → Gold), com orquestração via Apache Airflow, armazenamento em AWS S3, Data Warehouse em PostgreSQL e uma API REST construída com FastAPI para expor os dados tratados. Um dashboard interativo com Streamlit está em desenvolvimento para tornar as análises acessíveis visualmente.
+O pipeline implementa a **Medallion Architecture** (Bronze → Silver → Gold), com orquestração via Apache Airflow, armazenamento em AWS S3, Data Warehouse em AWS RDS PostgreSQL e uma API REST construída com FastAPI hospedada em AWS EC2 para expor os dados tratados. Um dashboard interativo com Streamlit está em desenvolvimento para tornar as análises acessíveis visualmente.
 
 ---
 
@@ -39,13 +41,28 @@ O pipeline implementa a **Medallion Architecture** (Bronze → Silver → Gold),
 
 | Tecnologia | Papel no Projeto |
 |---|---|
-| **Python 3.12** | Linguagem principal — Pandas, SQLAlchemy, python-dotenv |
-| **Apache Airflow** | Orquestração e agendamento do pipeline ETL |
-| **Docker / Docker Compose** | Containerização de todos os serviços |
+| **Python 3.11** | Linguagem principal — Pandas, SQLAlchemy, python-dotenv |
+| **Apache Airflow** | Orquestração e agendamento do pipeline ETL (on-premise) |
+| **Docker / Docker Compose** | Containerização dos serviços |
 | **AWS S3** | Armazenamento do Data Lake (camadas Bronze, Silver e Gold) |
-| **PostgreSQL** | Data Warehouse relacional com modelo estrela |
+| **AWS RDS PostgreSQL** | Data Warehouse relacional em nuvem com modelo estrela |
+| **AWS EC2** | Hospedagem da API FastAPI em nuvem |
+| **AWS IAM** | Gerenciamento de acessos e roles para os serviços AWS |
 | **FastAPI** | API REST para exposição e consulta dos dados |
 | **Streamlit** | Dashboard interativo *(em desenvolvimento)* |
+
+---
+
+## Infraestrutura em Nuvem (AWS)
+
+| Serviço | Configuração | Uso no Projeto |
+|---|---|---|
+| **AWS S3** | Região us-east-1 | Data Lake com camadas Bronze, Silver e Gold em Parquet |
+| **AWS RDS PostgreSQL** | db.t4g.micro · sa-east-1 | Data Warehouse com 802.930 registros na fato_preco |
+| **AWS EC2** | t3.micro · Ubuntu 26.04 · sa-east-1 | Hospedagem da API FastAPI |
+| **AWS IAM** | Usuários + Role para EC2 | Controle de acesso seguro sem credenciais hardcoded |
+
+> **Decisão arquitetural**: A orquestração com Apache Airflow roda locamente. A instância t3.micro do Free Tier da AWS possui apenas 1GB de RAM, insuficiente para sustentar os containers do Airflow (webserver + scheduler) em operação simultânea. A evolução natural do projeto é realizar o upgrade da instância e, em paralelo, migrar o processamento para Spark, permitindo execução distribuída e eficiente em cloud.
 
 ---
 
@@ -77,13 +94,13 @@ data_lake/silver/
 ### 🥇 Gold — Modelo Analítico
 Camada de valor de negócio. Os dados são modelados seguindo o padrão **Star Schema**, com dimensões e tabela fato prontas para consultas analíticas de alto desempenho.
 
-| Tabela | Conteúdo |
-|---|---|
-| `dim_tempo` | Data de coleta, ano, mês, dia e dia da semana |
-| `dim_revenda` | Nome do posto, CNPJ e bandeira |
-| `dim_produto` | Tipo de combustível e unidade de medida |
-| `dim_localizacao` | Região, estado, município e bairro |
-| `fato_preco` | Valor de venda referenciando todas as dimensões |
+| Tabela | Linhas | Conteúdo |
+|---|---|---|
+| `dim_tempo` | 274 | Data de coleta, ano, mês, dia e dia da semana |
+| `dim_revenda` | 15.226 | Nome do posto, CNPJ e bandeira |
+| `dim_produto` | 7 | Tipo de combustível e unidade de medida |
+| `dim_localizacao` | 5.607 | Região, estado, município e bairro |
+| `fato_preco` | 802.930 | Valor de venda referenciando todas as dimensões |
 
 ```
 data_lake/gold/
@@ -109,15 +126,15 @@ extract_load_bronze ──► transform_load_silver ──► build_metrics_load
 | `extract_load_bronze` | Lê os CSVs da ANP, converte para Parquet e faz upload para o S3 |
 | `transform_load_silver` | Aplica todas as transformações e envia o Parquet tratado para o S3 |
 | `build_metrics_load_gold` | Constrói o Star Schema e envia os arquivos Gold para o S3 |
-| `load_dw` | Carrega as dimensões e a tabela fato no PostgreSQL |
+| `load_dw` | Carrega as dimensões e a tabela fato no AWS RDS PostgreSQL |
 
 ---
 
 ## API REST — Endpoints Disponíveis
 
-A API é construída com **FastAPI** e consulta diretamente o Data Warehouse PostgreSQL, cruzando as tabelas do Star Schema para entregar respostas ricas e precisas.
+A API é construída com **FastAPI**, hospedada em **AWS EC2**, e consulta diretamente o Data Warehouse no **AWS RDS PostgreSQL**, cruzando as tabelas do Star Schema para entregar respostas ricas e precisas.
 
-> Documentação interativa disponível em `http://localhost:8000/docs`
+> Documentação interativa disponível em `http://54.20.71.136:8000/docs`
 
 ### 🏘️ Bairros
 
@@ -183,7 +200,7 @@ monitoramento_combustivel_salvador/
 │   ├── extract.py                # Extração → Bronze
 │   ├── transform.py              # Transformação → Silver
 │   ├── build_metrics.py          # Modelagem → Gold
-│   ├── load.py                   # Carga → PostgreSQL
+│   ├── load.py                   # Carga → AWS RDS PostgreSQL
 │   ├── s3_load.py                # Upload → AWS S3
 │   └── utils/logger_config.py   # Configuração de logs
 │
@@ -214,7 +231,7 @@ cd monitoramento_combustivel_salvador
 cp .env.docker .env
 # Edite o .env com suas credenciais (AWS, PostgreSQL e caminhos dos CSVs)
 
-# 3. Suba todos os serviços
+# 3. Suba os serviços
 docker-compose up -d
 
 # 4. Acesse o Airflow e execute o pipeline
@@ -224,6 +241,8 @@ docker-compose up -d
 # 5. Consulte a API
 # http://localhost:8000/docs
 ```
+
+> **Nota:** O arquivo `.env.docker` deve conter as credenciais do AWS S3, AWS RDS e os caminhos dos CSVs da ANP. Nunca commite credenciais no repositório.
 
 ---
 
@@ -235,14 +254,13 @@ Os dados utilizados são públicos, disponibilizados semanalmente pela **ANP —
 
 ## Status do Projeto
 
-O pipeline ETL completo e o modelo dimensional estão operacionais e testados. As próximas etapas são:
-
 - [x] Pipeline ETL com Airflow (Bronze → Silver → Gold)
-- [x] Integração com AWS S3
+- [x] Integração com AWS S3 (Data Lake em nuvem)
 - [x] Star Schema e carga no PostgreSQL
 - [x] API REST com FastAPI
-- [ ] Deploy da API
-- [ ] Deploy do banco de dados PostgreSQL
+- [x] Deploy do Data Lake (AWS S3)
+- [x] Deploy do Data Warehouse (AWS RDS PostgreSQL)
+- [x] Deploy da API (AWS EC2)
 - [ ] Conclusão e deploy do dashboard Streamlit
 
 ---
