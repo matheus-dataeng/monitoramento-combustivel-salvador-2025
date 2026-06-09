@@ -27,7 +27,7 @@ def load(
         raise ValueError("Variaveis de ambiente não definidas")
     
     try:
-        url_banco = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}"
+        url_banco = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}?connect_timeout=300"
         engine = create_engine(url_banco)
         
         table_dim_tempo = os.getenv("TABLE_DIM_TEMPO")
@@ -84,10 +84,10 @@ def load(
                 conn.execute(text(f'TRUNCATE TABLE {tabela} CASCADE'))
                 logger.info(f"Tabela truncada: {tabela}")
                 
-                df.to_sql(name = tabela, con = conn, index = False, chunksize = 10000, if_exists = "append", )
+                df.to_sql(name = tabela, con = conn, index = False, chunksize = 10000, if_exists = "append")
                 logger.info(f"Tabela carregada: {tabela} / Colunas: {df.shape[1]} / Linhas: {len(df)}")
                 
-            fato_preco.to_sql(name = table_fato_preco, con= conn, index= False, chunksize= 10000, if_exists= "append", method = "multi")
+            fato_preco.to_sql(name = table_fato_preco, con= conn, index= False, chunksize= 500, if_exists= "append")
             logger.info(f"Tabela carregada: {table_fato_preco} / Colunas: {fato_preco.shape[1]} / Linhas: {len(fato_preco)}")
     
     except Exception:

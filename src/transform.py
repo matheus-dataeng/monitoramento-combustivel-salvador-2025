@@ -26,7 +26,7 @@ def concat_files(df_semestre_1: pd.DataFrame, df_semestre_2: pd.DataFrame) -> pd
         logger.info("Arquivo gerado")
     
     except Exception:
-        logger.exception("Erro ao gerar arquivo")
+        logger.exception("Erro ao concatenar arquivo")
         raise 
     
     return df
