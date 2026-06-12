@@ -9,7 +9,8 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Data%20Warehouse-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![AWS S3](https://img.shields.io/badge/AWS%20S3-Data%20Lake-FF9900?style=for-the-badge&logo=amazons3&logoColor=white)
 ![AWS RDS](https://img.shields.io/badge/AWS%20RDS-PostgreSQL-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white)
-![AWS EC2](https://img.shields.io/badge/AWS%20EC2-FastAPI-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)
+![AWS EC2](https://img.shields.io/badge/AWS%20EC2-Deploy-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Concluído-brightgreen?style=for-the-badge)
 
@@ -18,8 +19,6 @@
 > Pipeline completo de engenharia de dados para coleta, transformação e análise dos preços de combustíveis automotivos em **Salvador/BA**, com base nos dados públicos da **ANP — Agência Nacional do Petróleo, Gás Natural e Biocombustíveis**.
 
 </div>
-
----
 
 ## Sobre o Projeto
 
@@ -46,7 +45,7 @@ O pipeline implementa a **Medallion Architecture** (Bronze → Silver → Gold),
 | **Docker / Docker Compose** | Containerização dos serviços |
 | **AWS S3** | Armazenamento do Data Lake (camadas Bronze, Silver e Gold) |
 | **AWS RDS PostgreSQL** | Data Warehouse relacional em nuvem com modelo estrela |
-| **AWS EC2** | Hospedagem da API FastAPI em nuvem |
+| **AWS EC2** | Hospedagem da API FastAPI e dashboard Streamlit |
 | **AWS IAM** | Gerenciamento de acessos e roles para os serviços AWS |
 | **FastAPI** | API REST para exposição e consulta dos dados |
 | **Streamlit** | Dashboard analítico para visualização dos dados |
@@ -59,10 +58,10 @@ O pipeline implementa a **Medallion Architecture** (Bronze → Silver → Gold),
 |---|---|---|
 | **AWS S3** | Região us-east-1 | Data Lake com camadas Bronze, Silver e Gold em Parquet |
 | **AWS RDS PostgreSQL** | db.t4g.micro · sa-east-1 | Data Warehouse com 802.930 registros na fato_preco |
-| **AWS EC2** | t3.micro · Ubuntu 26.04 · sa-east-1 | Hospedagem da API FastAPI |
+| **AWS EC2** | t3.micro · Ubuntu 26.04 · sa-east-1 | API FastAPI + Dashboard Streamlit em produção |
 | **AWS IAM** | Usuários + Role para EC2 | Controle de acesso seguro sem credenciais hardcoded |
 
-> **Decisão arquitetural**: A orquestração com Apache Airflow roda locamente. A instância t3.micro do Free Tier da AWS possui apenas 1GB de RAM, insuficiente para sustentar os containers do Airflow (webserver + scheduler) em operação simultânea. A evolução natural do projeto é realizar o upgrade da instância e, em paralelo, migrar o processamento para Spark, permitindo execução distribuída e eficiente em cloud.
+> **Decisão arquitetural:** A orquestração com Apache Airflow roda on-premise. A instância t3.micro do Free Tier da AWS possui apenas 1GB de RAM, insuficiente para sustentar os containers do Airflow (webserver + scheduler) em operação simultânea. A evolução natural do projeto é realizar o upgrade da instância e, em paralelo, migrar o processamento para **Apache Spark**, permitindo execução distribuída e eficiente em cloud.
 
 ---
 
@@ -169,6 +168,18 @@ Análise do comportamento dos preços durante as principais datas do calendário
 
 ---
 
+## Dashboard Streamlit
+
+O dashboard é construído com **Streamlit** e **Plotly**, consumindo dados diretamente da API FastAPI. Organizado em múltiplas páginas:
+
+- **Visão Geral** — preço médio por combustível em Salvador
+- **Réveillon** — comportamento dos preços no período de 01 a 03/01/2025
+- **Carnaval** — evolução dos preços de 27/02 a 04/03/2025
+- **Festas Juninas** — análise do período de 20 a 26/06/2025
+- **Natal** — preços no período de 22 a 28/12/2025
+
+---
+
 ## Estrutura do Repositório
 
 ```
@@ -205,11 +216,15 @@ monitoramento_combustivel_salvador/
 ├── sql/
 │   └── script_tabelas.sql        # DDL do Data Warehouse
 │
-├── streamlit_app/
-│   └── dashboard.py              # Dashboard interativo (em desenvolvimento)
+├── streamlit_app/                # Dashboard interativo
+│   ├── app.py                    # Página principal
+│   ├── pages/                    # Páginas por período festivo
+│   └── services/
+│       └── api.py                # Camada de integração com a API
 │
 ├── docker-compose.yml
-├── Dockerfile
+├── Dockerfile.api
+├── Dockerfile.streamlit
 ├── Dockerfile.airflow
 └── requirements.txt
 ```
@@ -222,19 +237,32 @@ monitoramento_combustivel_salvador/
 
 ```bash
 # 1. Clone o repositório
-git clone <url-do-repositorio>
-cd monitoramento_combustivel_salvador
+git clone https://github.com/matheus-dataeng/monitoramento-combustivel-salvador-2025.git
+cd monitoramento-combustivel-salvador-2025
 
 # 2. Configure as variáveis de ambiente
 cp .env.docker .env
 # Edite o .env com suas credenciais (AWS, PostgreSQL e caminhos dos CSVs)
 
 # 3. Suba os serviços
-docker-compose up -d
-
+docker compose up -d
 ```
 
-> **Nota:** O arquivo `.env.docker` deve conter as credenciais do AWS S3, AWS RDS e os caminhos dos CSVs da ANP. 
+> **Nota:** O arquivo `.env.docker` deve conter as credenciais do AWS S3, AWS RDS e os caminhos dos CSVs da ANP. Nunca commite credenciais no repositório.
+
+---
+
+## Status do Projeto
+
+- [x] Pipeline ETL com Airflow (Bronze → Silver → Gold)
+- [x] Integração com AWS S3 (Data Lake em nuvem)
+- [x] Star Schema e carga no PostgreSQL
+- [x] API REST com FastAPI
+- [x] Deploy do Data Lake (AWS S3)
+- [x] Deploy do Data Warehouse (AWS RDS PostgreSQL)
+- [x] Deploy da API (AWS EC2)
+- [x] Dashboard Streamlit com Plotly
+- [x] Deploy do Dashboard (AWS EC2)
 
 ---
 
@@ -243,6 +271,7 @@ docker-compose up -d
 Os dados utilizados são públicos, disponibilizados semanalmente pela **ANP — Agência Nacional do Petróleo, Gás Natural e Biocombustíveis**, como parte do Programa de Monitoramento dos Preços dos Combustíveis (PMPC).
 
 ---
+
 <div align="center">
   <sub>Desenvolvido por <strong>Matheus</strong> · Salvador, BA · 2026</sub>
 </div>
