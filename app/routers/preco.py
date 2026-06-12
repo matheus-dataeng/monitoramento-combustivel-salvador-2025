@@ -25,7 +25,7 @@ def media_geral(db = Depends(get_db)):
                     ON fat.id_tempo = tmp.id_tempo
                 JOIN dim_localizacao AS loc 
                     ON fat.id_localizacao = loc.id_localizacao
-                WHERE loc.municipio = 'Salvador'
+                WHERE loc.municipio = 'Salvador' AND pro.produto IN ('Diesel', 'Diesel S10', 'Etanol', 'Gasolina', 'Gasolina Aditivada')
                 GROUP BY pro.produto, pro.unidade_medida
             
             
