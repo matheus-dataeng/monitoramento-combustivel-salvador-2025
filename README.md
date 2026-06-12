@@ -234,7 +234,7 @@ docker-compose up -d
 
 ```
 
-> **Nota:** O arquivo `.env.docker` deve conter as credenciais do AWS S3, AWS RDS e os caminhos dos CSVs da ANP. Nunca commite credenciais no repositório.
+> **Nota:** O arquivo `.env.docker` deve conter as credenciais do AWS S3, AWS RDS e os caminhos dos CSVs da ANP. 
 
 ---
 
