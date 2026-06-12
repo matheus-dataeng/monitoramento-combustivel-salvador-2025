@@ -18,21 +18,17 @@ def media_bairro(db = Depends(get_db)):
                 loc.estado_sigla,
                 loc.municipio,
                 loc.bairro,
-                ROUND(AVG(fat.valor_venda), 2) AS media_valor,
-                pro.produto,
-                pro.unidade_medida
+                ROUND(AVG(fat.valor_venda), 2) AS media_preco
             FROM fato_preco AS fat
             JOIN dim_localizacao AS loc
                 ON fat.id_localizacao = loc.id_localizacao 
-            JOIN dim_produto AS pro
-                ON fat.id_produto = pro.id_produto 
             WHERE loc.municipio = 'Salvador'
+                AND loc.bairro IN ('Pituba', 'Caminho Das Arvores', 'Brotas', 'Engenho Velho De Brotas',
+                'Paralela', 'Cajazeiras', 'Cabula', 'Itapua')
             GROUP BY 
                 loc.bairro, 
                 loc.municipio, 
-                loc.estado_sigla, 
-                pro.produto, 
-                pro.unidade_medida
+                loc.estado_sigla
     
         '''
         )

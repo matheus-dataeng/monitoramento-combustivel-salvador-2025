@@ -16,7 +16,7 @@ def preco_revellion(db= Depends(get_db)):
                 SELECT 
                     loc.municipio,
                     loc.bairro,
-                    ROUND(AVG(fat.valor_venda), 2) AS preco_media,
+                    ROUND(AVG(fat.valor_venda), 2) AS media_preco,
                     tmp.data_coleta,
                     pro.produto
                 FROM fato_preco AS fat
@@ -50,10 +50,10 @@ def preco_carnaval(db = Depends(get_db)):
         
         query = text(
             '''
-                SELECT 
+            SELECT 
                 loc.municipio,
                 loc.bairro,
-                ROUND(AVG(fat.valor_venda), 2) AS preco_media,
+                ROUND(AVG(fat.valor_venda), 2) AS media_preco,
                 tmp.data_coleta,
                 pro.produto
             FROM fato_preco AS fat
@@ -63,7 +63,8 @@ def preco_carnaval(db = Depends(get_db)):
                 ON fat.id_tempo = tmp.id_tempo 
             JOIN dim_produto AS pro
                 ON fat.id_produto = pro.id_produto 
-            WHERE tmp.data_coleta BETWEEN '2025-02-27' AND '2025-03-04' AND loc.municipio = 'Salvador'
+            WHERE tmp.data_coleta BETWEEN '2025-02-15' AND '2025-03-07' AND loc.municipio = 'Salvador'
+                AND loc.bairro IN ('Pituba', 'Paripe', 'Periperi', 'Itapua', 'Cajazeiras', 'Rio Vermelho', 'Piraja', 'Retiro')
             GROUP BY loc.bairro, tmp.data_coleta, pro.produto, loc.municipio 
             
             '''
@@ -90,7 +91,7 @@ def preco_festas_juninas(db = Depends(get_db)):
             SELECT 
                 loc.municipio,
                 loc.bairro,
-                ROUND(AVG(fat.valor_venda), 2) AS preco_media,
+                ROUND(AVG(fat.valor_venda), 2) AS media_preco,
                 tmp.data_coleta,
                 pro.produto
             FROM fato_preco AS fat
@@ -101,6 +102,7 @@ def preco_festas_juninas(db = Depends(get_db)):
             JOIN dim_produto AS pro
                 ON fat.id_produto = pro.id_produto 
             WHERE tmp.data_coleta BETWEEN '2025-06-20' AND '2025-06-26' AND loc.municipio = 'Salvador'
+                AND loc.bairro IN ('Brotas','Paralela','Nazare','Graca','Federacao','Itapoan','Eng Velho De Brotas','Dois De Julho')
             GROUP BY loc.bairro, tmp.data_coleta, pro.produto, loc.municipio 
             
             '''
@@ -125,7 +127,7 @@ def preco_natal(db = Depends(get_db)):
             SELECT 
                 loc.municipio,
                 loc.bairro,
-                ROUND(AVG(fat.valor_venda), 2) AS preco_media,
+                ROUND(AVG(fat.valor_venda), 2) AS media_preco,
                 tmp.data_coleta,
                 pro.produto
             FROM fato_preco AS fat
@@ -136,6 +138,7 @@ def preco_natal(db = Depends(get_db)):
             JOIN dim_produto AS pro
                 ON fat.id_produto = pro.id_produto 
             WHERE tmp.data_coleta BETWEEN '2025-12-22' AND '2025-12-28' AND loc.municipio = 'Salvador'
+                 AND loc.bairro IN ('Pituacu', 'Retiro', 'Pituba', 'Paralela', 'Caminho das Arvores', 'Itapoan', 'Brotas', 'Paripe')
             GROUP BY loc.bairro, tmp.data_coleta, pro.produto, loc.municipio
             
             '''

@@ -11,7 +11,7 @@
 ![AWS RDS](https://img.shields.io/badge/AWS%20RDS-PostgreSQL-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white)
 ![AWS EC2](https://img.shields.io/badge/AWS%20EC2-FastAPI-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Concluído-brightgreen?style=for-the-badge)
 
 <br/>
 
@@ -25,7 +25,7 @@
 
 Os preços dos combustíveis impactam diretamente o dia a dia de milhões de brasileiros. Este projeto nasce da curiosidade de entender como esses preços se comportam na cidade de Salvador ao longo de 2025 e de construir, do zero, uma arquitetura de dados robusta e escalável para responder a essas perguntas.
 
-O pipeline implementa a **Medallion Architecture** (Bronze → Silver → Gold), com orquestração via Apache Airflow, armazenamento em AWS S3, Data Warehouse em AWS RDS PostgreSQL e uma API REST construída com FastAPI hospedada em AWS EC2 para expor os dados tratados. Um dashboard interativo com Streamlit está em desenvolvimento para tornar as análises acessíveis visualmente.
+O pipeline implementa a **Medallion Architecture** (Bronze → Silver → Gold), com orquestração via Apache Airflow, armazenamento em AWS S3, Data Warehouse em AWS RDS PostgreSQL e uma API REST construída com FastAPI hospedada em AWS EC2 para expor os dados tratados. Um dashboard interativo desenvolvido com Streamlit permite visualizar indicadores, tendências de preços e comparativos entre combustíveis, bairros e períodos festivos.
 
 ---
 
@@ -49,7 +49,7 @@ O pipeline implementa a **Medallion Architecture** (Bronze → Silver → Gold),
 | **AWS EC2** | Hospedagem da API FastAPI em nuvem |
 | **AWS IAM** | Gerenciamento de acessos e roles para os serviços AWS |
 | **FastAPI** | API REST para exposição e consulta dos dados |
-| **Streamlit** | Dashboard interativo *(em desenvolvimento)* |
+| **Streamlit** | Dashboard analítico para visualização dos dados |
 
 ---
 
@@ -133,8 +133,6 @@ extract_load_bronze ──► transform_load_silver ──► build_metrics_load
 ## API REST — Endpoints Disponíveis
 
 A API é construída com **FastAPI**, hospedada em **AWS EC2**, e consulta diretamente o Data Warehouse no **AWS RDS PostgreSQL**, cruzando as tabelas do Star Schema para entregar respostas ricas e precisas.
-
-> Documentação interativa disponível em `http://54.20.71.136:8000/docs`
 
 ### 🏘️ Bairros
 
@@ -234,12 +232,6 @@ cp .env.docker .env
 # 3. Suba os serviços
 docker-compose up -d
 
-# 4. Acesse o Airflow e execute o pipeline
-# http://localhost:8080
-# DAG: Monitoramento_preco_combustivel
-
-# 5. Consulte a API
-# http://localhost:8000/docs
 ```
 
 > **Nota:** O arquivo `.env.docker` deve conter as credenciais do AWS S3, AWS RDS e os caminhos dos CSVs da ANP. Nunca commite credenciais no repositório.
@@ -251,20 +243,6 @@ docker-compose up -d
 Os dados utilizados são públicos, disponibilizados semanalmente pela **ANP — Agência Nacional do Petróleo, Gás Natural e Biocombustíveis**, como parte do Programa de Monitoramento dos Preços dos Combustíveis (PMPC).
 
 ---
-
-## Status do Projeto
-
-- [x] Pipeline ETL com Airflow (Bronze → Silver → Gold)
-- [x] Integração com AWS S3 (Data Lake em nuvem)
-- [x] Star Schema e carga no PostgreSQL
-- [x] API REST com FastAPI
-- [x] Deploy do Data Lake (AWS S3)
-- [x] Deploy do Data Warehouse (AWS RDS PostgreSQL)
-- [x] Deploy da API (AWS EC2)
-- [ ] Conclusão e deploy do dashboard Streamlit
-
----
-
 <div align="center">
   <sub>Desenvolvido por <strong>Matheus</strong> · Salvador, BA · 2026</sub>
 </div>

@@ -114,21 +114,28 @@ services:
   api:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.api
     container_name: fastapi-app
     env_file:
       - .env.docker
-    environment:
-      HOST_PG: postgres-projeto
-      PORT_PG: "5432"
     ports:
       - "8000:8000"
     volumes:
       - ./app:/app/app
       - ./src:/app/src
+    networks:
+      - combustivel_network
+    restart: unless-stopped
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    container_name: streamlit-app
+    ports:
+      - "8501:8501"
     depends_on:
-      postgres-projeto:
-        condition: service_healthy
+      - api
     networks:
       - combustivel_network
     restart: unless-stopped

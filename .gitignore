@@ -5,6 +5,5 @@ data_lake
 __pycache__
 logs/
 plugins/
-streamlit_app/
 .env.docker
 .idea/
